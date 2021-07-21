@@ -1,12 +1,12 @@
 # ELM2
-ELM2 is Petalinux project for Ultrascale+ board (UCLA).
+ELM2 is Petalinux project for Ultrascale+ board.
 
 ### Repository clone
 `git clone https://github.com/algreshilov88/ELM2`
 
 ### Petalinux build
 * Open terminal on your host machine
-* `cd /path/to/petalinux/folder`
+* `cd /path/to/petalinux 2020.1/folder`
 * `source settings.sh`
 * `cd /path/to/ELM2/project`
 * `petalinux-build`
@@ -14,7 +14,7 @@ ELM2 is Petalinux project for Ultrascale+ board (UCLA).
 * Copy boot.scr, BOOT.BIN, image.ub files from ELM2/images/linux to BOOT partition on SD card
 
 ### Bitstream update
-Replace path to `.bit` file with requested one in `petalinux-package ...` command.
+Replace path to `.bit` file with requested one in `petalinux-package ...` command. After first time building of project no need to rebuild it again, only `petalinux-package ...` command needs to be run with a new `.bit` file.
 
 ### Reboot Linux system on device from userspace
 Ultrascale+ doesn't have reboot functionality by default via "reboot" from userspace because SRST (both PS and PL reset) is handled in the PMU Firmware. 
