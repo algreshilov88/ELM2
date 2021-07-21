@@ -4,7 +4,11 @@ ELM2 is Petalinux project for Ultrascale+ board (for TIFR).
 ### Repository clone
 `git clone https://github.com/algreshilov88/ELM2`
 
-### Kernel configuration
+### Petalinux build
+* Open terminal on your host machine
+* `cd /path/to/petalinux 2020.1/folder`
+* `source settings.sh`
+* `cd /path/to/ELM2/project`
 * `petalinux-config -c kernel`
 * Enable following `Power management options` by clicking 'Y' button
   - `Suspend to RAM and standby`
@@ -17,13 +21,7 @@ ELM2 is Petalinux project for Ultrascale+ board (for TIFR).
   - `Zynq MPSoC Firmware Drivers`
     - `Enable Xilinx Zynq MPSoC firmware interface`
     - `Enable Xilinx Zynq MPSoC firmware debug APIs`
-
-
-### Petalinux build
-* Open terminal on your host machine
-* `cd /path/to/petalinux 2020.1/folder`
-* `source settings.sh`
-* `cd /path/to/ELM2/project`
+* Exit from Kernel config menu
 * `petalinux-build`
 * `petalinux-package --boot --format BIN --fsbl images/linux/zynqmp_fsbl.elf --u-boot images/linux/u-boot.elf --pmufw images/linux/pmufw.elf --fpga images/linux/*.bit --force`
 * Copy boot.scr, BOOT.BIN, image.ub files from ELM2/images/linux to BOOT partition on SD card
