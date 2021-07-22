@@ -39,14 +39,14 @@ Replace path to `.bit` file with requested one in `petalinux-package ...` comman
 
 ### Load bitstream to FPGA
 Set flags for Full Bitstream:
-`echo 0 > /sys/class/fpga_manager/fpga0/flags`
+* `echo 0 > /sys/class/fpga_manager/fpga0/flags`
 
 Load the Bitstream: 
-`mkdir -p /lib/firmware`
-`cp (.bit/.bin file) /lib/firmware/`
-`echo (.bit/.bin file) > /sys/class/fpga_manager/fpga0/firmware`
+* `mkdir -p /lib/firmware`
+* `cp (.bit/.bin file) /lib/firmware/`
+* `echo (.bit/.bin file) > /sys/class/fpga_manager/fpga0/firmware`
 
 ### Reboot Linux system on device remotely from userspace
 Ultrascale+ doesn't have reboot functionality by default via "reboot" command from userspace because SRST (both PS and PL reset) is handled in the PMU Firmware. 
 So was configured kernel so that we have pmu firmware interface in userspace to be able to reset system from linux command line. Use following command: 
-`echo pm_system_shutdown 1 > /sys/kernel/debug/zynqmp-firmware/pm`
+* `echo pm_system_shutdown 1 > /sys/kernel/debug/zynqmp-firmware/pm`
