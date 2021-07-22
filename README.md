@@ -34,8 +34,17 @@ ELM2 is Petalinux project for Ultrascale+ board (for TIFR).
 * `petalinux-package --boot --format BIN --fsbl images/linux/zynqmp_fsbl.elf --u-boot images/linux/u-boot.elf --pmufw images/linux/pmufw.elf --fpga images/linux/*.bit --force`
 * Copy boot.scr, BOOT.BIN, image.ub files from ELM2/images/linux to BOOT partition on SD card
 
-### Bitstream update
+### Bitstream update on BOOT partition of SD card
 Replace path to `.bit` file with requested one in `petalinux-package ...` command. After first time building of project no need to rebuild it again, only `petalinux-package ...` command needs to be run with a new `.bit` file.
+
+### Load bitstream to FPGA
+Set flags for Full Bitstream:
+`echo 0 > /sys/class/fpga_manager/fpga0/flags`
+
+Load the Bitstream: 
+`mkdir -p /lib/firmware`
+`cp (.bit/.bin file) /lib/firmware/`
+`echo (.bit/.bin file) > /sys/class/fpga_manager/fpga0/firmware`
 
 ### Reboot Linux system on device remotely from userspace
 Ultrascale+ doesn't have reboot functionality by default via "reboot" command from userspace because SRST (both PS and PL reset) is handled in the PMU Firmware. 
