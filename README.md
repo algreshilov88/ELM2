@@ -9,6 +9,10 @@ ELM2 is Petalinux project for Ultrascale+ board (for TIFR).
 * `cd /path/to/petalinux 2020.1/folder`
 * `source settings.sh`
 * `cd /path/to/ELM2/project`
+* `petalinux-config`
+* Enable following `FPGA Manager` by clicking 'Y' button
+  - `FPGA Manager`
+* Exit from general config menu
 * `petalinux-config -c kernel`
 * Enable following `Power management options` by clicking 'Y' button
   - `Suspend to RAM and standby`
@@ -19,8 +23,12 @@ ELM2 is Petalinux project for Ultrascale+ board (for TIFR).
     - `Debug Filesystem`
 * Enable following `Firmware Drivers`
   - `Zynq MPSoC Firmware Drivers`
-    - `Enable Xilinx Zynq MPSoC firmware interface`
-    - `Enable Xilinx Zynq MPSoC firmware debug APIs`
+    - `Xilinx Zynq MPSoC firmware interface`
+    - `Xilinx Zynq MPSoC firmware debug APIs`
+* Enable following `Device Drivers`
+  - `FPGA Configuration Framework`
+    - `Xilinx Zynq UltraScale+ MPSoC FPGA `
+    - `FPGA debug fs`
 * Exit from Kernel config menu
 * `petalinux-build`
 * `petalinux-package --boot --format BIN --fsbl images/linux/zynqmp_fsbl.elf --u-boot images/linux/u-boot.elf --pmufw images/linux/pmufw.elf --fpga images/linux/*.bit --force`
